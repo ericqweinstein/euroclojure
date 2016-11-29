@@ -41,8 +41,13 @@
       (f/cache)))
 
 (def testing
-  (-> (.subtract dataset training)
-      (f/cache)))
+  (-> (f/sample dataset false 0.3 1234)
+      (f/cache))
+
+  ;; TODO: Figure out why dataset subtraction is failing. (EQW 28 Nov 2016)
+  ;; (-> (.subtract dataset training)
+  ;;   (f/cache)
+)
 
 (def categorical-features-info
   ;; Feature index 0: sex, two values (M/F)
