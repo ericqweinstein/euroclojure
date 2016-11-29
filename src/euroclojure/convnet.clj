@@ -220,8 +220,9 @@ euroclojure.convnet
 
     (println "Initializing network...")
     (-> network
-        (.init)
-        (.setListeners (ScoreIterationListener. 1)))
+        (.init))
+        ;; TODO: Fix NPE that occurs when setting listeners. (EQW 28 Nov 2016)
+        ;; (.setListeners (ScoreIterationListener. 1)))
 
     (println "Training model...")
     (.fit scaler data-iter)
